@@ -73,10 +73,6 @@ void inversa(Matrix M, Matrix &I){
 
   Matrix cofactor, transpuesta;
 
-  zeroes(I, cofactor.size());
-  zeroes(cofactor, cofactor.size());
-  zeroes(transpuesta, cofactor.size());
-
   float deter =   determinant(M);
   float aux1 = 1/deter;
 
@@ -84,8 +80,8 @@ void inversa(Matrix M, Matrix &I){
     exit(EXIT_FAILURE);
   }
   else{
-    transpose(M,transpuesta);
-    cofactors(transpuesta, cofactor);
+    cofactors(M,transpuesta);
+    transpose(transpuesta, cofactor);
     productRealMatrix(aux1, cofactor, I);
   }
 }
